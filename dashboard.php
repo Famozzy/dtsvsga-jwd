@@ -4,21 +4,16 @@
   if (!isset($_SESSION["email"])) {
     header("Location: admin-login.php");
   }
-  // include_once("config/koneksi.php");
-
-  $data = [
-    [
-      "id" => "1",
-      "nama" => "John Doe",
-      "email" => "johndoe@email.com",
-      "no_hp" => "08123456789",
-      "semester" => "3",
-      "ipk" => "3.5",
-      "pilihan_beasiswa" => "Beasiswa 1",
-      "berkas" => "berkas.pdf",
-      "status_ajuan" => "0"
-    ],
-  ]
+  include_once("config/koneksi.php");
+  function cekStatus($status) {
+    if($status == 0){
+      echo '<span class="badge text-bg-warning">Belum Diverifikasi</span>';
+    } else if($status == 1) {
+      echo '<span class="badge text-bg-success">Sudah Diverifikasi</span>';
+    } else {
+      echo '<span class="badge text-bg-danger">Ditolak</span>';
+    }
+  }
 ?>
 
 <div class="container">
@@ -28,6 +23,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th scope="col">No.</th>
             <th scope="col">Nama</th>
             <th scope="col">Email</th>
             <th scope="col">No. HP</th>
@@ -41,29 +37,30 @@
         </thead>
         <tbody>
           <?php 
-            // $query = "SELECT * FROM pendaftar";
-            // $result = mysqli_query($conn, $query);
-            // $data = mysqli_fetch_assoc($result);
-            while($row = $data[0]): 
-            $status_ajuan = $row["status_ajuan"] == 0 ? "Belum Diverifikasi" : "Sudah Diverifikasi";
+            $query = "SELECT * FROM pendaftar";
+            $result = mysqli_query($conn, $query);
+            $n = 1;
           ?>
-          <tr>
-            <td><?= $row["nama"] ?></td>
-            <td><?= $row["email"] ?></td>
-            <td><?= $row["no_hp"] ?></td>
-            <td>Semester <?= $row["semester"]?></td>
-            <td><?= $row["ipk"] ?></td>
-            <td><?= $row["pilihan_beasiswa"] ?></td>
-            <td><a href="uploads/<?= $row["berkas"] ?>" target="_blank">Lihat Berkas</a></td>
-            <td><?= $status_ajuan ?></td>
-            <td>
-              <a class="btn btn-sm btn-primary" href="action/terima.php?id=<?=$row["id"]?>">Terima</a>
-              <a class="btn btn-sm btn-danger" href="action/tolak.php?id=<?=$row["id"]?>">Tolak</a>
-            </td>
-          </tr>
-          <?php break; ?>
+          <?php while($row = mysqli_fetch_assoc($result)): ?>
+            <tr>
+              <th scope="row"><?= $n++ ?></th>
+              <td><?= $row["nama"] ?></td>
+              <td><?= $row["email"] ?></td>
+              <td><?= $row["no_hp"] ?></td>
+              <td>Semester <?= $row["semester"]?></td>
+              <td><?= $row["ipk"] ?></td>
+              <td><?= $row["pilihan_beasiswa"] ?></td>
+              <td><a href="uploads/<?= $row["berkas"] ?>" target="_blank">Lihat Berkas</a></td>
+              <td><?= cekStatus($row["status_ajuan"]); ?></td>
+              <td>
+                <a class="btn btn-sm btn-primary" href="action/terima.php?id=<?=$row["id"]?>">Terima</a>
+                <a class="btn btn-sm btn-danger" href="action/tolak.php?id=<?=$row["id"]?>">Tolak</a>
+              </td>
+            </tr>
           <?php endwhile; ?>
         </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

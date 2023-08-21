@@ -4,14 +4,14 @@
   <div class="row">
     <div class="col-md-5 mx-auto border rounded shadow-sm px-4 py-5">
       <h2 class="text-center">Form Pendaftaran Beasiswa</h2>
-      <form>
+      <form method="post" action="action/daftar.php" enctype="multipart/form-data">
         <div class="mb-3">
           <label for="nama" class="form-label">Nama Lengkap</label>
           <input name="nama" type="text" class="form-control" id="nama" placeholder="adit" required>
         </div>
         <div class="mb-3">
-          <label for="Email" class="form-label">Email</label>
-          <input name="Email" type="Email" class="form-control" id="Email" placeholder="mhs@kampus.ac.id" required>
+          <label for="email" class="form-label">Email</label>
+          <input name="email" type="Email" class="form-control" id="email" placeholder="mhs@kampus.ac.id" required>
         </div>
         <div class="mb-3">
           <label for="no_hp" class="form-label">No. HP</label>
@@ -19,7 +19,7 @@
         </div>
         <div class="mb-3">
           <label for="semester" class="form-label">Semester Saat Ini</label>
-          <select class="form-select" id="semester" required>
+          <select name="semester" class="form-select" id="semester" required>
             <option selected disabled value="">Pilih Semester</option>
             <option value="1">Semester 1</option>
             <option value="2">Semester 2</option>
@@ -34,29 +34,33 @@
         <div class="mb-3">
           <label for="ipk" class="form-label">IPK Terakhir</label>
           <div class="input-group">
-            <input name="ipk" type="text" class="form-control" id="ipk" placeholder="IPK" disabled>
-            <button class="btn btn-outline-secondary" type="button" id="ipkButton">Cek IPK mu</button>
+            <input name="ipk" type="text" class="form-control bg-dark-subtle" id="ipk" placeholder="IPK" readonly>
+            <button class="btn btn-outline-secondary" type="button" id="ipkButton">Cek IPK Anda</button>
           </div>
         </div>
         <div class="mb-3">
           <label for="pilihanBeasiswa" class="form-label">Pilihan Beasiswa</label>
-          <select name="pilihan_beasiswa" class="form-select" id="pilihanBeasiswa" disabled>
+          <select name="pilihan_beasiswa" class="form-select overflow-hidden" id="pilihanBeasiswa" disabled>
             <option selected disabled value="">Pilih Beasiswa</option>
-            <option value="Beasiswa a">Beasiswa A</option>
-            <option value="Beasiswa b">Beasiswa B</option>
+            <option value="Beasiswa Prestasi">Beasiswa Prestasi</option>
+            <option value="Beasiswa Bidikmisi">Beasiswa Bidikmisi</option>
           </select>
         </div>
         <div class="mb-3">
           <label for="formFile" class="form-label">Berkas Syarat</label>
-          <input class="form-control" type="file" id="formFile" name="berkas" required disabled>
+          <input class="form-control" type="file" id="formFile" name="berkas" accept="application/pdf" required disabled>
+          <p class="form-text">
+            <small>File yang diunggah harus berformat .pdf dan ukuran maksimal 2MB</small>
+          </p>
         </div>
         <div class="row mb-3 column-gap-2">
-          <button id="submitButton" type="submit" class="col btn btn-primary w-full" disabled>Daftar</button>
+          <input id="submitButton" type="submit" class="col btn btn-primary w-full" name="submit" value="Daftar" disabled>
           <a href="index.php" class="col btn btn-outline-primary w-full">Batal</a>
         </div>
       </form>
     </div>
   </div>
+  <script src="js/script.js"></script>
 </div>
 
 <?php include("_footer.php") ?>

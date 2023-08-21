@@ -1,5 +1,13 @@
 <?php include("_header.php") ?>
 
+<?php
+  if(isset($_GET["status"])) {
+    if($_GET["status"] == "success") {
+      echo "<script>alert('Beasiswa berhasil diajukan')</script>";
+    }
+  }
+?>
+
 <div class="container text-center mt-5">
   <div class="row px-2">
     <div class="col-md-4 mx-auto">

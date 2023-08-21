@@ -3,7 +3,7 @@
 include_once("../config/koneksi.php");
 
 if(isset($_POST["submit"])) {
-  $ipk = $_POST["ipk"];
+  $ipk = (float) $_POST["ipk"];
 
   if($ipk < 3.0) {
     header("Location: ../daftar.php");
@@ -16,5 +16,16 @@ if(isset($_POST["submit"])) {
   $pilihan_beasiswa = $_POST["pilihan_beasiswa"];
   $berkas = $_FILES["berkas"];
 
-  $query = "INSERT INTO pendaftar (nama, email, no_hp, semester, ipk, pilihan_beasiswa, berkas, status_ajuan) VALUES ('$nama', '$email', '$no_hp', '$semester', '$ipk', '$pilihan_beasiswa', '$berkas', '0')";
+  $target_dir = "../uploads/";
+  $file_name = basename($berkas["name"]);
+  $target_file = $target_dir . $file_name;
+  move_uploaded_file($berkas["tmp_name"], $target_file);
+  // header("Location: ../uploads/$file_name");
+
+  $query = "INSERT INTO pendaftar (nama, email, no_hp, semester, ipk, pilihan_beasiswa, berkas) VALUES ('$nama', '$email', '$no_hp', '$semester', '$ipk', '$pilihan_beasiswa', '$file_name')";
+  $result = mysqli_query($conn, $query);
+
+  if($result) {
+    header("Location: ../index.php?status=success");
+  }
 }
