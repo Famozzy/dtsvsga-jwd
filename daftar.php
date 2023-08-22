@@ -17,6 +17,11 @@
           <label for="no_hp" class="form-label">No. HP</label>
           <input name="no_hp" type="number" class="form-control" id="no_hp" pattern="[0-9]{10,12}" placeholder="08123XXXXXXX" required>
         </div>
+        <!-- nim input form -->
+        <div class="mb-3">
+          <label for="nim" class="form-label">NIM</label>
+          <input name="nim" type="number" class="form-control" id="nim" placeholder="1234567890" required>
+        </div>
         <div class="mb-3">
           <label for="semester" class="form-label">Semester Saat Ini</label>
           <select name="semester" class="form-select" id="semester" required>

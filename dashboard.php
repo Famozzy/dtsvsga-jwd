@@ -27,6 +27,7 @@
             <th scope="col">Nama</th>
             <th scope="col">Email</th>
             <th scope="col">No. HP</th>
+            <th scope="col">NIM</th>
             <th scope="col">Semester Saat Ini</th>
             <th scope="col">IPK</th>
             <th scope="col">Pilihan Beasiswa</th>
@@ -47,6 +48,7 @@
               <td><?= $row["nama"] ?></td>
               <td><?= $row["email"] ?></td>
               <td><?= $row["no_hp"] ?></td>
+              <td><?= $row["nim"] ?></td>
               <td>Semester <?= $row["semester"]?></td>
               <td><?= $row["ipk"] ?></td>
               <td><?= $row["pilihan_beasiswa"] ?></td>
