@@ -20,6 +20,8 @@
   <div class="row mt-5">
     <div class="col-md-12 overflow-x-auto">
       <h2 class="ms-5">Admin Dashboard</h2>
+      <a class="btn btn-outline-danger ms-5" href="action/logout.php">Logout</a>
+      <hr>
       <table class="table table-striped">
         <thead>
           <tr>

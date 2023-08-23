@@ -1,5 +1,3 @@
-document.getElementById("ipkButton").addEventListener?.("click", cekIPK)
-
 function cekIPK() {
   const IPK = Math.random() * (4.0 - 2.0) + 2.0
   document.getElementById("ipk").value = IPK.toFixed(2)
@@ -19,3 +17,5 @@ function cekIPK() {
     submitButton.disabled = true
   }
 }
+
+document.getElementById("ipkButton")?.addEventListener("click", cekIPK)

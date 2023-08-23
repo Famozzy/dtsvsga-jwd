@@ -17,7 +17,7 @@
         <p class="mb-1">Beasiswa<span class="text-danger">Merdeka</span> memiliki 2 jenis beasiswa, yaitu:</p>
         <ul>
           <li>Beasiswa Prestasi</li>
-          <li>Beasiswa Keringanan</li>
+          <li>Beasiswa Bidikmisi</li>
         </ul>
       </div>
       <div class="row gap-3">

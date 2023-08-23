@@ -72,6 +72,7 @@
                 <th scope="col">Nama</th>
                 <th scope="col">Email</th>
                 <th scope="col">No. HP</th>
+                <th scope="col">NIM</th>
                 <th scope="col">Semester Saat Ini</th>
                 <th scope="col">IPK</th>
                 <th scope="col">Pilihan Beasiswa</th>
@@ -91,7 +92,8 @@
                   <td><?= $row["nama"] ?></td>
                   <td><?= $row["email"] ?></td>
                   <td><?= "*********" ?></td>
-                  <td><?= "*********"?></td>
+                  <td><?= "*********" ?></td>
+                  <td><?= "*********" ?></td>
                   <td><?= "*********" ?></td>
                   <td><?= $row["pilihan_beasiswa"] ?></td>
                   <td>dirahasiakan</td>
